@@ -1492,7 +1492,47 @@ class Program
                 }
                 Console.ReadLine();
                 Console.Clear();
-            } while (true);
+            } while (true);          
+        }
+
+        static void VisaSpecifik()
+        {
+            Console.WriteLine("Vill du veta mer om en serie eller film?");
+            Console.WriteLine("1. Serie");
+            Console.WriteLine("2. Film");
+            int input = Convert.ToInt32(Console.ReadLine());
+
+            switch (input)
+            {
+                case 1:
+                    int nummrering = 1;
+                    Console.WriteLine("Series:");
+                    foreach (Serie serie in mySeries)
+                    {
+                        Console.WriteLine($"{nummrering}. {serie.Name}"); // skriver endast ut titel på serien, inte allt annat.
+                        nummrering++;
+                    }
+
+                    int choice = Convert.ToInt32(Console.ReadLine());
+                    Serie listOfSerier = mySeries[choice - 1]; // skriver ut alla detaljer på valda serien
+
+                    Console.WriteLine(listOfSerier);
+                    break;
+                case 2:
+                    nummrering = 1;
+                    Console.WriteLine("Series:");
+                    foreach (Movie movie in myMovies)
+                    {
+                        Console.WriteLine($"{nummrering}. {movie.Name}"); // skriver endast ut titel på serien, inte allt annat.
+                        nummrering++;
+                    }
+
+                    choice = Convert.ToInt32(Console.ReadLine());
+                    Movie listOfMovies = myMovies[choice - 1]; // skriver ut alla detaljer på valda serien
+
+                    Console.WriteLine(listOfMovies);
+                    break;
+            }
         }
 
         /*static void GoWeb()
@@ -1528,8 +1568,8 @@ class Program
 
             Console.WriteLine(strResponse);*/
 
-            // Denna Metod skapar serier.
-            // Denna metoden avslutar Consolen.
+        // Denna Metod skapar serier.
+        // Denna metoden avslutar Consolen.
 
         static void Quit()
         {
@@ -1542,8 +1582,9 @@ class Program
             {
                 Console.WriteLine("Vilken lista vill du se");
                 Console.WriteLine("1. Serier. ");
-                Console.WriteLine("2 Filmer. ");
-                Console.WriteLine("3. Tillbaks till Start.");
+                Console.WriteLine("2. Filmer. ");
+                Console.WriteLine("3. Mer detaljer");
+                Console.WriteLine("4. Tillbaks till Start.");
                 int menu = Convert.ToInt32(Console.ReadLine());
 
                 switch (menu)
@@ -1555,13 +1596,15 @@ class Program
                         Movie.showMovies(myMovies);
                         break;
                     case 3:
+                        VisaSpecifik();
+                        break;
+                    case 4:
                         Start();
                         break;
                     default:
                         Console.WriteLine("Felaktig inmatning PAPPSKALLE!");
                         break;
                 }
-
 
             } while (keepGoing == true);
         }
@@ -1644,6 +1687,11 @@ class Program
         {
 
         }
+
+        public override string ToString()
+        {
+            return $"Titel: {Name} Säsonger: {seasons} Episoder: {episodes} År: {Year}";
+        }
         //----------------------------------------------------------------------------------------------------
         public static List<Serie> MakeSerie()
         {
@@ -1688,13 +1736,13 @@ class Program
         private int length;
         private string movieDirector;
 
-        public Movie()
+        public Movie() // Tom Construktor, används för att användaren kanske är en retard som inte förstår något.
         {
 
 
         }
 
-        public Movie(string Name, int Year, string MainActor, int Length, string MovieDirector)
+        public Movie(string Name, int Year, string MainActor, int Length, string MovieDirector)  // Construktor
         {
             this.Name = Name;
             this.Year = Year;
