@@ -1674,7 +1674,7 @@ class Program
                 Series.Add(new Serie(seasons, episodes, category, name, year));
             }
             return Series;
-
+            
         }
         public static void showSeries(List<Serie> minaSerier)
         {
