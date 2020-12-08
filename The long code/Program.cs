@@ -1493,7 +1493,6 @@ class Program
                 Console.ReadLine();
                 Console.Clear();
             } while (true);
-
         }
 
         /*static void GoWeb()
@@ -1566,9 +1565,6 @@ class Program
 
             } while (keepGoing == true);
         }
-
-
-
     }
     // Show är Basklassen.
     class Show
@@ -1606,14 +1602,12 @@ class Program
     // Klassen Serie ärver från classen Show.
     class Serie : Show
     {
-
         //----------------------------------------------------------------------------------------------------
         //Fields
         private int episodes;
         private int seasons;
         private string category;
         //----------------------------------------------------------------------------------------------------
-
 
         //----------------------------------------------------------------------------------------------------
         // Property
@@ -1635,8 +1629,6 @@ class Program
             set { seasons = value; }
         }
         //----------------------------------------------------------------------------------------------------
-
-
 
         //----------------------------------------------------------------------------------------------------
         // Constructor
@@ -1744,7 +1736,6 @@ class Program
                 movieDirector = value;
             }
         }
-
 
         public static List<Movie> CreateMovie()
         {
